@@ -18,7 +18,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('friends', \App\Http\Controllers\FriendIndexController::class)->name('friends');
+Route::get('/friends', \App\Http\Controllers\FriendIndexController::class)->name('friends');
+
+Route::get('/profile/{user}', \App\Http\Controllers\ProfileIndexController::class)->name('profile');
 
 
 Route::get('/dashboard', function () {
