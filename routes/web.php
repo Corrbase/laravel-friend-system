@@ -23,6 +23,10 @@ Route::get('/friends', \App\Http\Controllers\FriendIndexController::class)->name
 Route::get('/profile/{user}', \App\Http\Controllers\ProfileIndexController::class)->name('profile');
 
 
+
+Route::post('/friends', [\App\Http\Controllers\FriendStoreController::class, 'friend'])->name('friends.store');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
