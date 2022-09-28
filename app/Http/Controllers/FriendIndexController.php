@@ -12,10 +12,14 @@ class FriendIndexController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
 
-        return view('friends.index');
+        return view('friends.index', [
+            'PFT' => $request->user()->pendingFriendsTo,
+
+            'PFF' => $request->user()->pendingFriendsFrom,
+        ]);
 
     }
 

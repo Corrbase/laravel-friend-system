@@ -39,19 +39,28 @@
                             <h2>
                                 Requests
                             </h2>
+                            @forelse($PFF as $PF)
                             <div class="flex items-center justify-between">
                                 <a href="#">
-                                    friend
+                                    {{ $PF->name }}
                                 </a>
                                 <div class="space-x-2">
                                     <button>
                                         Accept
                                     </button>
-                                    <button>
-                                        Reject
-                                    </button>
+                                    <form action="{{ route('friends.destroy', ['user_id' => $PF]) }}" method="post" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="text-indigo-600">Reject</button>
+                                    </form>
                                 </div>
                             </div>
+
+                            @empty
+
+                                You have no pending request from
+
+                            @endforelse
 
                         </div>
 
@@ -59,17 +68,26 @@
                             <h2>
                                 Pending Frined requests
                             </h2>
+                            @forelse($PFT as $PF)
                             <div class="flex items-center justify-between">
-                                <a href="#">
-                                    friend
+                                <a href="{{ route('profile', $PF) }}">
+                                    {{ $PF->name }}
                                 </a>
                                 <div class="space-x-2">
-                                    <button>
-                                        Cancel
-                                    </button>
+                                    <div class="space-x-2">
+                                        <form action="{{ route('friends.destroy', ['user_id' => $PF]) }}" method="post" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="text-indigo-600">Cancel</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
+                            @empty
 
+                                You have no pending request :(
+
+                            @endforelse
                         </div>
                     </div>
                 </div>
