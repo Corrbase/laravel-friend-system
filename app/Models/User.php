@@ -35,6 +35,10 @@ class User extends Authenticatable
 //        return $this->pendingFriendsTo()->get()->contains($user);
     }
 
+    public function isFriendsWith(User $user)
+    {
+        return $this->friends->contains($user);
+    }
 
 
     public function friendsTo()
