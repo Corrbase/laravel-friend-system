@@ -22,9 +22,11 @@
                                     {{ $friend->name }}
                                 </a>
                                 <div class="space-x-2">
-                                    <button>
-                                        unfriend
-                                    </button>
+                                    <form action="{{ route('friends.destroy', ['user_id' => $friend]) }}" method="post" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="text-indigo-600">Unfriend</button>
+                                    </form>
                                 </div>
                             </div>
 
