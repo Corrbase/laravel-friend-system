@@ -18,10 +18,17 @@ class FriendStoreController extends Controller
 //        return back();
 //    }
 
-    public function friend(Request $request, User $user)
+    public function friend(Request $request)
     {
+        $user = $request->user_id;
+
+        if ($request->user()->hasPendingFriendRequestFor($user))
+        {
+            return back();
+        }
         $request->user()->pendingFriendsTo()->attach($user);
 
         return back();
+
     }
 }

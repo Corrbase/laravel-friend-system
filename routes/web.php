@@ -24,7 +24,7 @@ Route::get('/profile/{user}', \App\Http\Controllers\ProfileIndexController::clas
 
 
 
-Route::post('/friends', [\App\Http\Controllers\FriendStoreController::class, 'friend'])->name('friends.store');
+Route::post('/friends/{user_id}', [\App\Http\Controllers\FriendStoreController::class, 'friend'])->name('friends.store');
 
 
 Route::get('/dashboard', function () {
