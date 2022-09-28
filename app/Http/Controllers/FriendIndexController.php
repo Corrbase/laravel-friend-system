@@ -17,8 +17,8 @@ class FriendIndexController extends Controller
 
         return view('friends.index', [
             'PFT' => $request->user()->pendingFriendsTo,
-
             'PFF' => $request->user()->pendingFriendsFrom,
+            'friends' => $request->user()->friends // Collection
         ]);
 
     }

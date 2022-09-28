@@ -14,6 +14,7 @@ use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use HasMergedRelationships;
 
     protected $fillable = [
         'name',
@@ -33,6 +34,8 @@ class User extends Authenticatable
         return $this->pendingFriendsTo->contains($user);
 //        return $this->pendingFriendsTo()->get()->contains($user);
     }
+
+
 
     public function friendsTo()
     {
@@ -66,6 +69,11 @@ class User extends Authenticatable
     public function acceptedFriendsFrom()
     {
         return $this->friendsFrom()->wherePivot('accepted', true);
+    }
+
+    public function friends()
+    {
+        return $this->mergedRelationWithModel(User::class, 'friends_view');
     }
 
 

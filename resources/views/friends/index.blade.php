@@ -15,10 +15,11 @@
                         <h2 class="text-lg font-semibold">
                             Friends
                         </h2>
+                        @forelse($friends as $friend)
                         <div class="space-y-3">
                             <div class="flex items-center justify-between">
                                 <a href="#">
-                                    friend
+                                    {{ $friend->name }}
                                 </a>
                                 <div class="space-x-2">
                                     <button>
@@ -28,6 +29,11 @@
                             </div>
 
                         </div>
+                        @empty
+
+                            You have no friends
+
+                        @endforelse
                     </div>
                 </div>
             </div>
