@@ -45,9 +45,11 @@
                                     {{ $PF->name }}
                                 </a>
                                 <div class="space-x-2">
-                                    <button>
-                                        Accept
-                                    </button>
+                                    <form action="{{ route('friends.patch', ['user_id' => $PF]) }}" method="post" class="inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button class="text-indigo-600">Accept</button>
+                                    </form>
                                     <form action="{{ route('friends.destroy', ['user_id' => $PF]) }}" method="post" class="inline">
                                         @csrf
                                         @method('DELETE')

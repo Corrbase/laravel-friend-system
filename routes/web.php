@@ -26,6 +26,7 @@ Route::get('/profile/{user}', \App\Http\Controllers\ProfileIndexController::clas
 
 Route::post('/friends/{user_id}', [\App\Http\Controllers\FriendStoreController::class, 'friend'])->name('friends.store');
 Route::delete('/friends/{user_id}', \App\Http\Controllers\FriendDestroyController::class)->name('friends.destroy');
+Route::patch('/friends/{user_id}', \App\Http\Controllers\FriendPatchController::class)->name('friends.patch');
 
 
 Route::get('/dashboard', function () {
