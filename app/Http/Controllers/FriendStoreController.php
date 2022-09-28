@@ -26,6 +26,13 @@ class FriendStoreController extends Controller
         {
             return back();
         }
+        if ($request->user()->id == $user->id){
+
+            return back();
+        }
+        if ($request->user()->friends->contains($user)){
+            return back();
+        }
         $request->user()->pendingFriendsTo()->attach($user);
 
         return back();
